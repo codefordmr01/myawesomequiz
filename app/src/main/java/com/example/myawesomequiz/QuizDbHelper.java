@@ -49,6 +49,7 @@ public class QuizDbHelper extends SQLiteOpenHelper {
                 QuestionsTable.COLUMN_OPTION1 + " TEXT, " +
                 QuestionsTable.COLUMN_OPTION2 + " TEXT, " +
                 QuestionsTable.COLUMN_OPTION3 + " TEXT, " +
+                QuestionsTable.COLUMN_OPTION4 + " TEXT, " +
                 QuestionsTable.COLUMN_ANSWER_NR + " INTEGER, " +
                 QuestionsTable.COLUMN_DIFFICULTY + " TEXT, " +
                 QuestionsTable.COLUMN_CATEGORY_ID + " INTEGER, " +
@@ -76,12 +77,25 @@ public class QuizDbHelper extends SQLiteOpenHelper {
     }
 
     private void fillCategoriesTable() {
-        Category c1 = new Category("Programming");
+/*        Category c1 = new Category("Programming");
         addCategory(c1);
         Category c2 = new Category("Geography");
         addCategory(c2);
         Category c3 = new Category("Math");
+        addCategory(c3);*/
+
+        Category c1 = new Category("DAY1");
+        addCategory(c1);
+        Category c2 = new Category("DAY2");
+        addCategory(c2);
+        Category c3 = new Category("DAY3");
         addCategory(c3);
+        Category c4 = new Category("DAY4");
+        addCategory(c4);
+        Category c5 = new Category("DAY5");
+        addCategory(c5);
+        Category c6 = new Category("DAY6");
+        addCategory(c6);
     }
 
     private void addCategory(Category category) {
@@ -91,29 +105,29 @@ public class QuizDbHelper extends SQLiteOpenHelper {
     }
 
     private void fillQuestionsTable() {
-        Question q1 = new Question("Programming, Easy: A is correct",
-                "A", "B", "C", 1,
-                Question.DIFFICULTY_EASY, Category.PROGRAMMING);
+        Question q1 = new Question("DAY1, Easy: A is correct",
+                "(A)", "(B)", "(C)", "(D)", 1,
+                Question.DIFFICULTY_EASY, Category.DAY1);
         addQuestion(q1);
-        Question q2 = new Question("Geography, Medium: B is correct",
-                "A", "B", "C", 2,
-                Question.DIFFICULTY_MEDIUM, Category.GEOGRAPHY);
+        Question q2 = new Question("DAY2, Medium: B is correct",
+                "(A)", "(B)", "(C)", "(D)", 2,
+                Question.DIFFICULTY_MEDIUM, Category.DAY2);
         addQuestion(q2);
-        Question q3 = new Question("Math, Hard: C is correct",
-                "A", "B", "C", 3,
-                Question.DIFFICULTY_HARD, Category.MATH);
+        Question q3 = new Question("DAY3, Hard: C is correct",
+                "(A)", "(B)", "(C)", "(D)", 3,
+                Question.DIFFICULTY_HARD, Category.DAY3);
         addQuestion(q3);
-        Question q4 = new Question("Math, Easy: A is correct",
-                "A", "B", "C", 1,
-                Question.DIFFICULTY_EASY, Category.MATH);
+        Question q4 = new Question("DAY4, Easy: A is correct",
+                "(A)", "(B)", "(C)", "(D)", 1,
+                Question.DIFFICULTY_EASY, Category.DAY4);
         addQuestion(q4);
-        Question q5 = new Question("Non existing, Easy: A is correct",
-                "A", "B", "C", 1,
-                Question.DIFFICULTY_EASY, 4);
+        Question q5 = new Question("DAY5, Easy: A is correct",
+                "(A)", "(B)", "(C)", "(D)", 1,
+                Question.DIFFICULTY_EASY, Category.DAY5);
         addQuestion(q5);
-        Question q6 = new Question("Non existing, Medium: B is correct",
-                "A", "B", "C", 2,
-                Question.DIFFICULTY_MEDIUM, 5);
+        Question q6 = new Question("DAY6, Medium: B is correct",
+                "(A)", "(B)", "(C)", "(D)", 2,
+                Question.DIFFICULTY_MEDIUM, Category.DAY6);
         addQuestion(q6);
     }
 
@@ -123,6 +137,7 @@ public class QuizDbHelper extends SQLiteOpenHelper {
         cv.put(QuestionsTable.COLUMN_OPTION1, question.getOption1());
         cv.put(QuestionsTable.COLUMN_OPTION2, question.getOption2());
         cv.put(QuestionsTable.COLUMN_OPTION3, question.getOption3());
+        cv.put(QuestionsTable.COLUMN_OPTION4, question.getOption4());
         cv.put(QuestionsTable.COLUMN_ANSWER_NR, question.getAnswerNr());
         cv.put(QuestionsTable.COLUMN_DIFFICULTY, question.getDifficulty());
         cv.put(QuestionsTable.COLUMN_CATEGORY_ID, question.getCategoryID());
@@ -162,6 +177,7 @@ public class QuizDbHelper extends SQLiteOpenHelper {
                 question.setOption1(c.getString(c.getColumnIndex(QuestionsTable.COLUMN_OPTION1)));
                 question.setOption2(c.getString(c.getColumnIndex(QuestionsTable.COLUMN_OPTION2)));
                 question.setOption3(c.getString(c.getColumnIndex(QuestionsTable.COLUMN_OPTION3)));
+                question.setOption4(c.getString(c.getColumnIndex(QuestionsTable.COLUMN_OPTION4)));
                 question.setAnswerNr(c.getInt(c.getColumnIndex(QuestionsTable.COLUMN_ANSWER_NR)));
                 question.setDifficulty(c.getString(c.getColumnIndex(QuestionsTable.COLUMN_DIFFICULTY)));
                 question.setCategoryID(c.getInt(c.getColumnIndex(QuestionsTable.COLUMN_CATEGORY_ID)));
@@ -200,6 +216,7 @@ public class QuizDbHelper extends SQLiteOpenHelper {
                 question.setOption1(c.getString(c.getColumnIndex(QuestionsTable.COLUMN_OPTION1)));
                 question.setOption2(c.getString(c.getColumnIndex(QuestionsTable.COLUMN_OPTION2)));
                 question.setOption3(c.getString(c.getColumnIndex(QuestionsTable.COLUMN_OPTION3)));
+                question.setOption4(c.getString(c.getColumnIndex(QuestionsTable.COLUMN_OPTION4)));
                 question.setAnswerNr(c.getInt(c.getColumnIndex(QuestionsTable.COLUMN_ANSWER_NR)));
                 question.setDifficulty(c.getString(c.getColumnIndex(QuestionsTable.COLUMN_DIFFICULTY)));
                 question.setCategoryID(c.getInt(c.getColumnIndex(QuestionsTable.COLUMN_CATEGORY_ID)));
